@@ -1,4 +1,7 @@
 # viral-metagenomics-nanopore
+
+![Status](https://img.shields.io/badge/status-in%20development-yellow)
+
 This repository contains a Bash pipeline for viral metagenomic analysis using Nanopore sequencing data from clinical samples. The workflow includes quality control, read trimming, filtering, taxonomic classification, and interactive visualization.
 
 ## Workflow Overview
