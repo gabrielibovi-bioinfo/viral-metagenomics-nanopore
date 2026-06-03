@@ -27,11 +27,10 @@ echo "Starting viral metagenomics pipeline..."
 
 echo "Creating Conda environments..."
 
-conda create -y -n nanopore_qc -c bioconda -c conda-forge \
-    nanoplot porechop nanofilt
+source ~/opt/anaconda3/etc/profile.d/conda.sh
+conda create -y -n nanopore_qc -c bioconda -c conda-forge nanoplot porechop nanofilt
 
-conda create -y -n kraken_krona -c bioconda -c conda-forge \
-    kraken2 krona
+conda create -y -n kraken_krona -c bioconda -c conda-forge kraken2 krona
 
 # =========================================================
 # 2. Create directory structure
@@ -52,13 +51,9 @@ RAW_FASTQ="analysis/input/ERR14817851.fastq.gz"
 
 echo "Running initial quality analysis with NanoPlot..."
 
-source ~/opt/anaconda3/etc/profile.d/conda.sh
 conda activate nanopore_qc
 
-MPLBACKEND=Agg NanoPlot \
-    --fastq "$RAW_FASTQ" \
-    -o analysis/fastqc_pretrim \
-    -t 5
+NanoPlot --fastq "$RAW_FASTQ" -o analysis/fastqc_pretrim -t 5
 
 # =========================================================
 # 4. Adapter trimming and read filtering
@@ -67,13 +62,11 @@ MPLBACKEND=Agg NanoPlot \
 echo "Running adapter trimming with Porechop..."
 echo "Running read filtering with NanoFilt..."
 
-porechop \
-    -i "$RAW_FASTQ" \
-    --threads 5 \
+porechop -i "$RAW_FASTQ" --threads 5 \
     -o analysis/trimmed/reads_trimmed.fastq.gz
 
 zcat analysis/trimmed/reads_trimmed.fastq.gz | \
-NanoFilt --quality 15 --length 400 --maxlength 1700 | \
+NanoFilt --quality 15 --length 1000 --maxlength 1700 | \
 gzip > analysis/trimmed/ERR14817851_filtered.fastq.gz
 
 # =========================================================
@@ -82,10 +75,8 @@ gzip > analysis/trimmed/ERR14817851_filtered.fastq.gz
 
 echo "Running post-filter quality analysis..."
 
-MPLBACKEND=Agg NanoPlot \
-    --fastq analysis/trimmed/ERR14817851_filtered.fastq.gz \
-    -o analysis/fastqc_posttrim \
-    -t 5
+NanoPlot --fastq analysis/trimmed/ERR14817851_filtered.fastq.gz \
+    -o analysis/fastqc_posttrim  -t 5
 
 conda deactivate
 
