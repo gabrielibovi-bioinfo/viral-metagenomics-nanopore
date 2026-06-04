@@ -1,5 +1,6 @@
 # viral-metagenomics-nanopore
 
+![Platform](https://img.shields.io/badge/any_text-you_like-blue)
 ![Platform](https://img.shields.io/badge/platform-macOS)
 ![Platform](https://img.shields.io/badge/platform-Google%20Colab-F9AB00?logo=googlecolab)
 ![Status](https://img.shields.io/badge/status-in%20development-yellow)
