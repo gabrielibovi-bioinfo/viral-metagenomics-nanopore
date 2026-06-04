@@ -32,6 +32,8 @@ conda create -y -n nanopore_qc -c bioconda -c conda-forge nanoplot porechop nano
 
 conda create -y -n kraken_krona -c bioconda -c conda-forge kraken2 krona
 
+!mamba install -y -c bioconda sra-tools --quiet
+
 # =========================================================
 # 2. Create directory structure
 # =========================================================
@@ -41,6 +43,8 @@ echo "Creating directory structure..."
 mkdir -p analysis/{input,fastqc_pretrim,trimmed,fastqc_posttrim,kraken,krona}
 
 # Move FASTQ file to input directory
+fasterq-dump ERR14817851
+gzip ERR14817851.fastq
 mv ERR14817851.fastq.gz analysis/input/
 
 RAW_FASTQ="analysis/input/ERR14817851.fastq.gz"
@@ -60,14 +64,17 @@ NanoPlot --fastq "$RAW_FASTQ" -o analysis/fastqc_pretrim -t 5
 # =========================================================
 
 echo "Running adapter trimming with Porechop..."
-echo "Running read filtering with NanoFilt..."
 
 porechop -i "$RAW_FASTQ" --threads 5 \
     -o analysis/trimmed/reads_trimmed.fastq.gz
 
+echo "Running read filtering with NanoFilt..."
+
 zcat analysis/trimmed/reads_trimmed.fastq.gz | \
-NanoFilt --quality 15 --length 1000 --maxlength 1700 | \
+NanoFilt --quality 10 --length 900 --maxlength 1700 | \
 gzip > analysis/trimmed/ERR14817851_filtered.fastq.gz
+
+#Note: zcat or gunzip -c
 
 # =========================================================
 # 5. Final quality control with NanoPlot
@@ -93,10 +100,7 @@ conda activate kraken_krona
 ktUpdateTaxonomy.sh
 
 # Download Kraken2 taxonomy
-kraken2-build --download-taxonomy --db viral_DB
-
-# Alternative download method using FTP:
-# kraken2-build --download-taxonomy --db viral_DB --use-ftp
+kraken2-build --download-taxonomy viral --db viral_DB --use-ftp
 
 KRAKEN_DB="viral_DB"
 
@@ -128,9 +132,6 @@ ktImportTaxonomy \
     analysis/krona/kraken_krona_input.txt \
     -o analysis/krona/krona_report.html
 
-# Alternative visualization using Kraken report:
-# ktImportTaxonomy analysis/kraken/kraken_report.txt \
-#     -t 4 \
-#     -o analysis/krona/krona_report_2.html
-
 conda deactivate
+
+# Fim.
