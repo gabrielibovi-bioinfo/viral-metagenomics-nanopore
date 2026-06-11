@@ -1,0 +1,30 @@
+  4.77	1955	1955	U	0	unclassified
+ 95.23	38993	0	R	1	root
+ 95.23	38993	0	R1	10239	  Viruses
+ 95.20	38982	0	R2	2732004	    Varidnaviria
+ 95.20	38982	0	K	2732005	      Bamfordvirae
+ 95.20	38982	0	P	2732007	        Nucleocytoviricota
+ 95.20	38982	0	C	2732525	          Pokkesviricetes
+ 95.20	38982	0	O	2732527	            Chitovirales
+ 95.20	38982	0	F	10240	              Poxviridae
+ 95.20	38982	0	F1	10241	                Chordopoxvirinae
+ 95.20	38982	6958	G	10242	                  Orthopoxvirus
+ 78.21	32024	32024	S	10244	                    Monkeypox virus
+  0.02	9	0	R2	2731341	    Duplodnaviria
+  0.02	9	0	K	2731360	      Heunggongvirae
+  0.02	9	0	P	2731618	        Uroviricota
+  0.02	9	1	C	2731619	          Caudoviricetes
+  0.01	3	1	G	186789	            Punavirus
+  0.00	2	0	S	10678	              Punavirus P1
+  0.00	2	2	S1	10682	                Enterobacteria phage P7
+  0.00	2	1	C1	2842523	            Bronfenbrennervirinae
+  0.00	1	1	G	2842946	              Peeveelvirus
+  0.00	1	0	G	2843451	            Sawaravirus
+  0.00	1	0	S	2844234	              Sawaravirus WGPS2
+  0.00	1	1	S1	1226260	                Stx2-converting phage Stx2a_WGPS2
+  0.00	1	1	C1	2788787	            unclassified Caudoviricetes
+  0.00	1	0	G	1623273	            Triavirus
+  0.00	1	0	S	2846382	              Triavirus tp3102
+  0.00	1	1	S1	445516	                Staphylococcus phage tp310-2
+  0.00	2	0	R2	3403061	    Viruses incertae sedis
+  0.00	2	2	F	687329	      Anelloviridae
