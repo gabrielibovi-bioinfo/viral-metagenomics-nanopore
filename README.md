@@ -3,7 +3,11 @@
 ![Platform](https://img.shields.io/badge/platform_-macOS_-blue)
 ![Platform](https://img.shields.io/badge/platform-Google%20Colab-F9AB00?logo=googlecolab)
 
-This repository contains a Bash pipeline for viral metagenomic analysis using Nanopore sequencing data from clinical samples. The workflow includes quality control, read trimming, filtering, taxonomic classification, and interactive visualization.
+This repository contains a Bash pipeline for viral metagenomic analysis using Nanopore sequencing data from clinical samples. 
+
+The workflow includes quality control, read trimming, filtering, taxonomic classification, and interactive visualization.
+
+The analyzed dataset was obtained from the NCBI’s public Sequence Read Archive (SRA), under accession number ERR14817851.
 
 ## Workflow Overview
 
