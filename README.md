@@ -1,5 +1,5 @@
 # viral-metagenomics-nanopore
-> This repository contains a Bash pipeline for viral metagenomic analysis using Nanopore sequencing data from clinical samples. 
+> This repository contains a Bash/Colab pipeline for viral metagenomic analysis using Nanopore sequencing data from clinical samples. 
 
 ![Platform](https://img.shields.io/badge/platform_-macOS_-blue)
 ![Platform](https://img.shields.io/badge/platform-Google%20Colab-F9AB00?logo=googlecolab)
